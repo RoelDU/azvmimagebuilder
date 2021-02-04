@@ -88,7 +88,7 @@ Import-Module Az.Accounts
 $currentAzContext = Get-AzContext
 
 # destination image resource group
-$imageResourceGroup="wvdImageDemoRg"
+$imageResourceGroup="AIB-RG"
 
 # location (see possible locations in main docs)
 $location="westus2"
