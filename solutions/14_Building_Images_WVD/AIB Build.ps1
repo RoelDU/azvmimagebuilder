@@ -19,6 +19,7 @@ Start-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $image
 # Check Build Status
 $getStatus=$(Get-AzImageBuilderTemplate -ResourceGroupName $imageResourceGroup -Name $imageTemplateName)
 $getStatus | Format-List -Property *
+
 # these show the status the build
 $getStatus.LastRunStatusRunState 
 $getStatus.LastRunStatusMessage
