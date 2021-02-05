@@ -8,6 +8,8 @@ $imageResourceGroup="AIB-RG"
 $location="westus2"
 $subscriptionID="74eaa7c3-20cd-428c-90c4-24cee8f0be25"
 $runOutputName="sigOutput"
+$idenityName="aibIdentity1612410720"
+$idenityNameResourceId=$(Get-AzUserAssignedIdentity -ResourceGroupName $imageResourceGroup -Name $idenityName).Id
 
 # create SIG
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location

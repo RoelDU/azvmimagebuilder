@@ -109,7 +109,8 @@
                         "baseosimg": "windows10"
                     },
                     "replicationRegions": [
-                      "<region1>"
+                      "westus2",
+                      "australiaeast"
 
                     ]
                 }
