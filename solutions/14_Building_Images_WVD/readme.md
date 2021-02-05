@@ -156,12 +156,15 @@ https://docs.microsoft.com/en-us/azure/role-based-access-control/troubleshooting
 ```powerShell
 $sigGalleryName= "myaibsig01"
 $imageDefName ="win10wvd"
+$imageDefName2 ="win10o365wvd"
 
 # create gallery
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location
 
 # create gallery definition
 New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'Windows' -Sku '10wvd'
+
+New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName2 -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'office-365' -Sku 'Win10o365wvd'
 
 ```
 

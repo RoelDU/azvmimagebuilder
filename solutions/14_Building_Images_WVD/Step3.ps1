@@ -2,15 +2,19 @@
 
 ```powerShell
 $sigGalleryName= "SIG"
-$imageDefName ="win10wvd"
+$imageDefName ="Win10ms-20H2"
+$imageDefName2 ="Win10msO365-20H2"
+$imageResourceGroup="AIB-RG"
+$location="westus2"
 
-# create gallery
+# create SIG
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location
 
-# create gallery definition
-New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'Windows' -Sku '10wvd'
+# create gallery definition for Win10ms
+New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'Windows' -Sku 'Win10ms-20H2'
 
-```
+# create gallery definition for Win10msO365
+New-AzGalleryImageDefinition -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup -Location $location -Name $imageDefName2 -OsState generalized -OsType Windows -Publisher 'myCo' -Offer 'office-365' -Sku 'Win10msO365-20H2'
 
 # Configure the Image Template
 For this example we have a template ready to that will download and update the template with the parameters specified earlier, it will install FsLogix, OS Optimizations, Teams and run Windows Update at the end.
@@ -47,7 +51,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsDesktop -Offer
 ## Download template and configure
 ```powerShell
 
-$templateUrl="https://raw.githubusercontent.com/RoelDU/azvmimagebuilder/master/solutions/14_Building_Images_WVD/armTemplateWVD.json"
+$templateUrl="https://raw.githubusercontent.com/RoelDU/azvmimagebuilder/master/armTemplateWVD.json"
 $templateFilePath = "armTemplateWVD.json"
 
 Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
@@ -57,7 +61,7 @@ Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
 ((Get-Content -path $templateFilePath -Raw) -replace '<region>',$location) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<runOutputName>',$runOutputName) | Set-Content -Path $templateFilePath
 
-((Get-Content -path $templateFilePath -Raw) -replace '<imageDefName>',$imageDefName) | Set-Content -Path $templateFilePath
+((Get-Content -path $templateFilePath -Raw) -replace '<imageDefName>',$imageDefName2) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<sharedImageGalName>',$sigGalleryName) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<region1>',$location) | Set-Content -Path $templateFilePath
 ((Get-Content -path $templateFilePath -Raw) -replace '<imgBuilderId>',$idenityNameResourceId) | Set-Content -Path $templateFilePath
