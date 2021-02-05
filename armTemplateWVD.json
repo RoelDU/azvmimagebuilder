@@ -102,14 +102,15 @@
             [
                 {   
                     "type": "SharedImage",
-                    "galleryImageId": "/subscriptions/74eaa7c3-20cd-428c-90c4-24cee8f0be25/resourceGroups/AIB-RG/providers/Microsoft.Compute/galleries/SIG/images/win10wvd",
+                    "galleryImageId": "/subscriptions/74eaa7c3-20cd-428c-90c4-24cee8f0be25/resourceGroups/AIB-RG/providers/Microsoft.Compute/galleries/SIG/images/Win10msO365-20H2",
                     "runOutputName": "sigOutput",
                     "artifactTags": {
                         "source": "wvd10",
-                        "baseosimg": "windows10"
+                        "baseosimg": "windows10ms"
                     },
                     "replicationRegions": [
-                      "westus2"
+                      "westus2",
+                      "australiaeast"
 
                     ]
                 }
