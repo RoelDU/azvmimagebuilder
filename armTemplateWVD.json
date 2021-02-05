@@ -31,7 +31,7 @@
             "identity": {
                 "type": "UserAssigned",
                         "userAssignedIdentities": {
-                        "": {}
+                        "/subscriptions/74eaa7c3-20cd-428c-90c4-24cee8f0be25/resourcegroups/AIB-RG/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aibIdentity1612410720": {}
                             
                     }
                     },
@@ -109,7 +109,8 @@
                         "baseosimg": "windows10"
                     },
                     "replicationRegions": [
-                      "westus2"
+                      "westus2",
+                      "australiaeast"
 
                     ]
                 }
@@ -120,13 +121,6 @@
     
     ]
 }    
-
-
-
-
-
-
-
 
 
 
