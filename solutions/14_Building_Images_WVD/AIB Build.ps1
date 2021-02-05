@@ -7,7 +7,7 @@ $location="westus2"
 # Image template submission
 $subscriptionID="74eaa7c3-20cd-428c-90c4-24cee8f0be25"
 Set-AzContext -Subscription $subscriptionID
-$imageTemplateName="wvd10ImageTemplate01"
+$imageTemplateName="wvd10ImageTemplate02"
 $templateFilePath = "armTemplateWVD.json"
 
 New-AzResourceGroupDeployment -ResourceGroupName $imageResourceGroup -TemplateFile $templateFilePath -api-version "2020-02-14" -imageTemplateName $imageTemplateName -svclocation $location
