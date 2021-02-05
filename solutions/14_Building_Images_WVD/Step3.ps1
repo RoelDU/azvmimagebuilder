@@ -6,6 +6,8 @@ $imageDefName ="Win10ms-20H2"
 $imageDefName2 ="Win10msO365-20H2"
 $imageResourceGroup="AIB-RG"
 $location="westus2"
+$subscriptionID="74eaa7c3-20cd-428c-90c4-24cee8f0be25"
+$runOutputName="sigOutput"
 
 # create SIG
 New-AzGallery -GalleryName $sigGalleryName -ResourceGroupName $imageResourceGroup  -Location $location
@@ -51,7 +53,7 @@ Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsDesktop -Offer
 ## Download template and configure
 ```powerShell
 
-$templateUrl="https://raw.githubusercontent.com/RoelDU/azvmimagebuilder/master/armTemplateWVD.json"
+$templateUrl="https://raw.githubusercontent.com/RoelDU/azvmimagebuilder/master/armTemplateWVDWin10ms20H2O365.json"
 $templateFilePath = "armTemplateWVD.json"
 
 Invoke-WebRequest -Uri $templateUrl -OutFile $templateFilePath -UseBasicParsing
